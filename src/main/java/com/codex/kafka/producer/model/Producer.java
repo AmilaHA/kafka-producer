@@ -2,18 +2,19 @@ package com.codex.kafka.producer.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
-@NoArgsConstructor
-//@Log4j2
-//@Data
 @Getter
 @Setter
+@Component
 public class Producer {
 
-    private ObjectMapper objectMapper;
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private final ObjectMapper objectMapper;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
+    public Producer(ObjectMapper objectMapper, KafkaTemplate<String, String> kafkaTemplate) {
+        this.objectMapper = objectMapper;
+        this.kafkaTemplate = kafkaTemplate;
+    }
 }
